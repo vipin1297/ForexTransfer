@@ -1,5 +1,7 @@
 package com.fund.transfer.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +25,7 @@ import com.fund.transfer.service.AccountService;
 @CrossOrigin(allowedHeaders = { "*", "*/" }, origins = { "*", "*/" })
 @RequestMapping("/users")
 public class AccountController {
-
+	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
 	@Autowired
 	AccountService accountService;
 
@@ -36,6 +38,7 @@ public class AccountController {
 	 */
 	@GetMapping("{userId}/accounts")
 	public AccountResponseDto getAllAccount(@PathVariable Long userId) {
+		logger.info(ApplicationConstant.INSIDE_ACCOUNT_CONTROLLER);
 		accountService.getAllAccount(userId);
 		AccountResponseDto accountResponseDto = new AccountResponseDto();
 		accountResponseDto.setMessage(ApplicationConstant.SUCCESS);
