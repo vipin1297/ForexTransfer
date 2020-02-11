@@ -6,4 +6,6 @@ import com.fund.transfer.entity.Account;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
+	Account findByAccountNumber(Long fromAcc);
+
 }
