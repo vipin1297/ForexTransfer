@@ -20,13 +20,19 @@ public class Transaction {
 	private LocalDateTime transactionDate;
 	private String transactionStatus;
 	private Long userId;
-    
+
+
+	public Long getTransactionId() {
+		return transactionId;
+
+	}
 	public Long getUserId() {
 		return userId;
+
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setTransactionId(Long transactionId) {
+		this.transactionId = transactionId;
 	}
 
 	public Long getFromAccount() {
@@ -76,4 +82,11 @@ public class Transaction {
 	public void setTransactionStatus(String transactionStatus) {
 		this.transactionStatus = transactionStatus;
 	}
+
+
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
 }

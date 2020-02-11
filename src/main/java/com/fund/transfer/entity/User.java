@@ -14,8 +14,6 @@ public class User {
 	private String userName;
 	private String password;
 	private String phoneNumber;
-	private Long accountNumber;
-	private Double balance;
 
 	public Long getUserId() {
 		return userId;
@@ -49,20 +47,5 @@ public class User {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Long getAccountNumber() {
-		return accountNumber;
-	}
-
-	public void setAccountNumber(Long accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-
-	public Double getBalance() {
-		return balance;
-	}
-
-	public void setBalance(Double balance) {
-		this.balance = balance;
-	}
 
 }
