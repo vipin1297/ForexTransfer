@@ -11,4 +11,7 @@ public class ApplicationConstant {
 	public static final String PASSWORD_NOT_FOUND = "Password not found";
 	public static final String USER_NOT_FOUND = "Invalid Credentials";
 	public static final String USERID_NOT_FOUND = "UserId not found";
+	public static final String PENDING_STATUS = "PENDING";
+	
+
 }
