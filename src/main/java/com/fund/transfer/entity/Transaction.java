@@ -12,6 +12,7 @@ public class Transaction {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long transactionId;
 	private Long fromAccount;
 	private Long toAccount;
 	private Double tranferAmount;
@@ -19,7 +20,7 @@ public class Transaction {
 	private LocalDateTime transactionDate;
 	private String transactionStatus;
 	private Long userId;
-
+    
 	public Long getUserId() {
 		return userId;
 	}
