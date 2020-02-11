@@ -12,6 +12,10 @@ import com.fund.transfer.entity.Transaction;
 
 public interface TransactionRepository extends JpaRepository<Transaction, Long>{
 
+
+	List<Transaction> findAllByTransactionStatus(String pendingStatus);
+
 	List<Transaction> findByUserId(Long userId);
+
 
 }

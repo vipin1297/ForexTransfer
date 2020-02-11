@@ -21,6 +21,12 @@ public class ApplicationConstant {
 	public static final String USERID_NOT_FOUND = "UserId not found";
 	public static final String PENDING_STATUS = "PENDING";
 
+
+	public static final String CANCELLED = "CANCELLED";
+	public static final String COMPLETED = "COMPLETED";
+	public static final Double TRANSACTION_CHARGE= 50.00;
+
+
 	public static final String INVALID_DATA = "Invalid data";
 	public static final String INSIDE_TRANSFER_CONTROLLER = "Inside TransferController of transfer";
 	public static final String INSIDE_ACCOUNT_CONTROLLER = "Inside AccountController of getAllAccount";

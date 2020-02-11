@@ -21,8 +21,13 @@ public class Transaction {
 	private String transactionStatus;
 	private Long userId;
 
+
 	public Long getTransactionId() {
 		return transactionId;
+
+	}
+	public Long getUserId() {
+		return userId;
 
 	}
 
@@ -78,9 +83,7 @@ public class Transaction {
 		this.transactionStatus = transactionStatus;
 	}
 
-	public Long getUserId() {
-		return userId;
-	}
+
 
 	public void setUserId(Long userId) {
 		this.userId = userId;

@@ -11,5 +11,10 @@ import com.fund.transfer.entity.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
 
+
 	public List<Account> findByUserId(Long userId);	
+
+	Account findByAccountNumber(Long fromAcc);
+
+
 }
