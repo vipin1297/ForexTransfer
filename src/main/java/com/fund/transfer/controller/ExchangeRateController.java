@@ -3,6 +3,7 @@ package com.fund.transfer.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +14,14 @@ import com.fund.transfer.dto.ExchangeRateResponseDto;
 import com.fund.transfer.entity.Account;
 import com.fund.transfer.repository.AccountRepository;
 import com.fund.transfer.service.TransferService;
-
+/**
+ * 
+ * @author Karthika T
+ * @version 1.0
+ *
+ *
+ **/
+@CrossOrigin(allowedHeaders = { "*", "*/" }, origins = { "*", "*/" })
 @RestController
 public class ExchangeRateController {
 	
@@ -22,7 +30,12 @@ public class ExchangeRateController {
 	
 	@Autowired
 	AccountRepository accountRepository;
-	
+	/**
+	 * 
+	 * @param ExchangeRateRequestDto 
+	 * @return ExchangeRateResponseDto as response
+	 * 
+	 */
 	@PostMapping("/rates")
 	public ResponseEntity<ExchangeRateResponseDto> getExchangeRateAndCurrency(@RequestBody ExchangeRateRequestDto exchangeRateRequestDto){
 		Account fromAcc=accountRepository.findByAccountNumber(exchangeRateRequestDto.getFromAccount());

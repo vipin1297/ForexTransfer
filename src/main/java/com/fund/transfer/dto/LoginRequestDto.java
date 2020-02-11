@@ -11,14 +11,15 @@ import lombok.Setter;
 @Setter
 public class LoginRequestDto {
 	@NotBlank(message=ApplicationConstant.USERID_NOT_FOUND)
-	private Long userId;
+	private String userName;
 	@NotBlank(message=ApplicationConstant.PASSWORD_NOT_FOUND)
 	private String password;
-	public Long getUserId() {
-		return userId;
+	
+	public String getUserName() {
+		return userName;
 	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getPassword() {
 		return password;

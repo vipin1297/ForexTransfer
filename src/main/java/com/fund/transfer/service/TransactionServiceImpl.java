@@ -14,7 +14,10 @@ import com.fund.transfer.exception.NotFoundException;
 import com.fund.transfer.repository.TransactionRepository;
 
 import lombok.extern.slf4j.Slf4j;
-
+/*
+ * Method return all theTransactionHistory information of a particular user. 
+ * 
+ */
 @Service
 @Slf4j
 public class TransactionServiceImpl implements TransactionService {

@@ -32,18 +32,20 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	UserRepository userRepository;
-
+	/*
+	 * Method validate a particular user into application. 
+	 * 
+	 */
 	@Override
 	public LoginResponseDto authenticateCustomer(LoginRequestDto loginRequestDto) throws NotFoundException {
 		logger.info("LoginServiceImpl authenticateCustomer ---> autheticating customer");
 		LoginResponseDto loginResponseDto = new LoginResponseDto();
-		Optional<User> user = userRepository.findByUserIdAndPassword(loginRequestDto.getUserId(),
+		Optional<User> user = userRepository.findByUserNameAndPassword(loginRequestDto.getUserName(),
 				loginRequestDto.getPassword());
 		if (user.isPresent()) {
 
 			BeanUtils.copyProperties(user.get(), loginResponseDto);
-			loginResponseDto.setUserName(user.get().getUserName());
-			loginResponseDto.setUserId(loginRequestDto.getUserId());
+			loginResponseDto.setUserName(loginRequestDto.getUserName());
 			loginResponseDto.setStatusCode(ApplicationConstant.SUCCESS_CODE);
 			logger.info("LoginServiceImpl authenticateCustomer ---> customer signed in");
 			return loginResponseDto;

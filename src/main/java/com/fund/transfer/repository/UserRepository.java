@@ -13,6 +13,8 @@ import com.fund.transfer.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	Optional<User> findByUserIdAndPassword(Long userId, String password);
+
+
+	Optional<User> findByUserNameAndPassword(String userName, String password);
 
 }

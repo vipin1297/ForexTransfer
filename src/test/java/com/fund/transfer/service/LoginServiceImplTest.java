@@ -1,9 +1,13 @@
 package com.fund.transfer.service;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -29,27 +33,21 @@ public class LoginServiceImplTest {
 	public void before() {
 
 	}
-	@Test
-	public void authenticateCustomer() throws NotFoundException {
-		LoginRequestDto req = new LoginRequestDto();
-		LoginRequestDto req1 = new LoginRequestDto();
-		LoginResponseDto res = null;
-		Optional<User> user = null;
-		User user1 = new User();
-		user1.setUserId(1L);
-		user1.setPassword("vinod");
-		user1.setUserId(2L);
-		user1.setPassword("vinod123");
-		req.setPassword("vinod");
-		req.setUserId(1L);
-		req1.setUserId(2L);
-		req1.setPassword("vinod123");
-		Mockito.when(userRepository.findByUserIdAndPassword(req.getUserId(), req.getPassword())).thenReturn(user);
-		
-	
-		
-
+		@Test
+		public void authenticateCustomer() throws NotFoundException {
+			LoginRequestDto req = new LoginRequestDto();
+			req.setUserName("vinod");
+			req.setPassword("vinod123");
+			List<User> list = new ArrayList<User>();
+			User user = new User();
+			user.setUserName("vinod");
+			user.setPassword("vinod123");
+			list.add(user);
+			Mockito.when(userRepository.findByUserNameAndPassword(req.getUserName(), req.getPassword())).thenReturn(Optional.of(user));
+			LoginResponseDto res = loginServiceImpl.authenticateCustomer(req);
+			assertNotNull(list);
+			
+	}
 		
 	}
 
-}

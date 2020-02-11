@@ -2,7 +2,6 @@ package com.fund.transfer.service;
 
 
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -30,24 +29,26 @@ public class AccountServiceImplTest {
 	
 	@Test
 	public void getAllAccount() {
-		List<AccountDetail> list = new ArrayList<AccountDetail>();
-		List<Account> account = null;
-		Account account1 = new Account();
+		List<Account> accounts = new ArrayList<Account>();
+		List<AccountDetail> accountDetails = new ArrayList<>();
+		Account account = new Account();
 		AccountDetail accountDetail = new AccountDetail();
-		accountDetail.setAccountNumber(1L);
+		account.setAccountId(1L);
+		account.setAccountNumber(1234L);
+		account.setAccountType("saving");
+		account.setBalance(3000.0);
+		account.setCurrency("INR");
+		account.setUserId(1L);
+		accounts.add(account);
+		accountDetail.setAccountNumber(1234L);
 		accountDetail.setAccountType("saving");
 		accountDetail.setBalance(3000.0);
 		accountDetail.setCurrency("INR");
 		accountDetail.setUserId(1L);
-		account1.setUserId(1L);
-		account1.setAccountId(1L);
-		account1.setAccountNumber(123L);
-		account1.setAccountType("saving");
-		account1.setBalance(3000.0);
-		account1.setCurrency("INR");
-		list.add(accountDetail);
-		Mockito.when(accountRepository.findByUserId(account1.getUserId())).thenReturn(account);
-		
+		accountDetails.add(accountDetail);
+		Mockito.when(accountRepository.findByUserId(1L)).thenReturn(accounts);
+		accountDetails = accountServiceImpl.getAllAccount(1L);
+		assertEquals(1, accountDetails.size());
 		
 	}
 

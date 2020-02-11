@@ -9,11 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fund.transfer.dto.TransactionHistoryResponseDto;
+import com.fund.transfer.exception.NoAccountFoundException;
 import com.fund.transfer.exception.NotFoundException;
 import com.fund.transfer.service.TransactionService;
 
 import lombok.extern.slf4j.Slf4j;
-
+/**
+ * 
+ * @author Raghib
+ * @version 1.0
+ *
+ */
 @CrossOrigin(allowedHeaders = { "*", "*/" }, origins = { "*", "*/" })
 @RestController
 @RequestMapping("/users/{userId}")
@@ -23,7 +29,13 @@ public class TransactionController {
 	@Autowired
 	TransactionService transactionService;
 
-	@GetMapping
+	/**
+	 * 
+	 * @param userId of User
+	 * @return TransactionHistoryResponseDto as response
+	 * 
+	 */
+	@GetMapping("/transactions")
 	public ResponseEntity<TransactionHistoryResponseDto> getTransactionHistory(
 			@PathVariable Long userId) throws NotFoundException {
 		

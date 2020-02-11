@@ -83,7 +83,7 @@ public class TransferServiceImpl implements TransferService {
 
 	}
 
-	@Scheduled(fixedDelay = 5000)
+	@Scheduled(fixedDelay = 300000)
 	// @Scheduled(cron = "0 0 0/30 * * ?")
 	public void completeTransfer() {
 		List<Transaction> transactions = transactionRepository

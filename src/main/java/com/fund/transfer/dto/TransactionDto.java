@@ -4,7 +4,13 @@ public class TransactionDto {
 	
 	private Long fromAcc;
 	private Long toAcc;
-	private Double Amount;
+	private Double amount;
+	public Double getAmount() {
+		return amount;
+	}
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
 	public Long getFromAcc() {
 		return fromAcc;
 	}
@@ -17,11 +23,6 @@ public class TransactionDto {
 	public void setToAcc(Long toAcc) {
 		this.toAcc = toAcc;
 	}
-	public Double getAmount() {
-		return Amount;
-	}
-	public void setAmount(Double amount) {
-		Amount = amount;
-	}
+	
 
 }
