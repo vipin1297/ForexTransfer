@@ -22,15 +22,18 @@ public class TransactionServiceImpl implements TransactionService {
 	@Autowired
 	TransactionRepository transactionRepository;
 
+	TransactionHistoryResponseDto transactionHistoryResponseDto = new TransactionHistoryResponseDto();
 	public TransactionHistoryResponseDto getTransactionHistory(Long userId) throws NotFoundException {
 
 		if (userId == 0 || userId == null) {
 			log.error(ApplicationConstant.USERID_NOT_FOUND);
+			transactionHistoryResponseDto.setStatusCode(ApplicationConstant.NOT_FOUND);
 			throw new NotFoundException(ApplicationConstant.USERID_NOT_FOUND);
+			
 
 		}
 
-		List<Transaction> transactionDetails = transactionRepository.findByUserId(userId);
+		List<Transaction> transactionDetails = transactionRepository.findByUserId(userId);		
 		List<TransactionHistory> transactionHistory = new ArrayList();
 		TransactionHistory transactionHistory2 = new TransactionHistory();
 		for (Transaction t : transactionDetails) {
@@ -42,9 +45,13 @@ public class TransactionServiceImpl implements TransactionService {
 		}
 
 		transactionHistory.add(transactionHistory2);
-		TransactionHistoryResponseDto transactionHistoryResponseDto = new TransactionHistoryResponseDto();
+		
 		transactionHistoryResponseDto.setTransactionDetails(transactionHistory);
 		transactionHistoryResponseDto.setStatusCode(ApplicationConstant.SUCCESS_CODE);
+		if(transactionDetails.size() == 0)
+		{
+			transactionHistoryResponseDto.setStatusCode(ApplicationConstant.TRANSACTION_HISTORY_NOT_FOUND);
+		}
 		return transactionHistoryResponseDto;
 
 	}
